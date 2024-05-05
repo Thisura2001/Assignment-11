@@ -23,6 +23,8 @@ $("#btnCustomerSave").on('click', function () {
 
     var CustomerObj = new CustomerModel(customerId, customerName, salary, address);
     Customers.push(CustomerObj);
+    alert("Customer Saved!!");
+    clearFields();
     loadCustomerTable();
 });
 $("#CustomerTableBody").on('click','tr',function (){
@@ -38,4 +40,35 @@ $("#CustomerTableBody").on('click','tr',function (){
     $("#name").val(customerName);
     $("#salary").val(salary);
     $("#address").val(address);
-})
+});
+$("#btnCustomerUpdate").on('click',function (){
+    let customerId = $("#cus_id").val();
+    let customerName = $("#name").val();
+    let salary = $("#salary").val();
+    let address = $("#address").val();
+
+    Customers[customerTableClicked].customerName =customerName;
+    Customers[customerTableClicked].salary =salary;
+    Customers[customerTableClicked].address = address;
+    alert("Customer Updated !!");
+    clearFields();
+    loadCustomerTable();
+});
+$("#btnCustomerReset").on('click',function (){
+    $("#cus_id").val("");
+    $("#name").val("");
+    $("#salary").val("");
+    $("#address").val("");
+});
+$("#btnCustomerDelete").on('click',function (){
+    Customers.splice(customerTableClicked,1);
+    alert("Customer Deleted!!!");
+    clearFields();
+    loadCustomerTable();
+});
+function clearFields() {
+    $("#cus_id").val("");
+    $("#name").val("");
+    $("#salary").val("");
+    $("#address").val("");
+}
