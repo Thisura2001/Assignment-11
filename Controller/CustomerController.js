@@ -6,7 +6,7 @@ function loadCustomerTable() {
     Customers.forEach((item) => {
         var record = `<tr>
             <td>${item.customerId}</td>
-            <td>${item.customerName}</td> <!-- Corrected property name to customerName -->
+            <td>${item.customerName}</td>
             <td>${item.salary}</td>
             <td>${item.address}</td>
         </tr>`;
@@ -15,8 +15,8 @@ function loadCustomerTable() {
 }
 
 $("#btnCustomerSave").on('click', function () {
-    let customerId = $("#cus_id").val(); // Corrected ID to match HTML input
-    let customerName = $("#name").val(); // Corrected ID to match HTML input
+    let customerId = $("#cus_id").val();
+    let customerName = $("#name").val();
     let salary = $("#salary").val();
     let address = $("#address").val();
 
