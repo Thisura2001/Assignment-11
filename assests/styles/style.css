@@ -1,7 +1,6 @@
 body{
     box-sizing: border-box;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background: black;
     overflow-x: hidden;
 }
 .navbar-brand{
@@ -13,12 +12,14 @@ body{
     width: 100vw;
     height : 100vh;
     position: relative;
+    overflow-y: hidden;
 }
 .sec2{
     width: 100vw;
     height: 100vh;
     position: relative;
     background: linear-gradient(to right top, #3b078f, #881717);
+    overflow-y: hidden;
 }
 .customerLabel{
     font-size: 100px;
@@ -58,12 +59,14 @@ body{
     height: 100vh;
     position: relative;
     background: linear-gradient(to right top, #3b078f, #881717);
+    overflow-y: hidden;
 }
 .sec4{
     width: 100vw;
     height: 100vh;
     position: relative;
     background: linear-gradient(to right top, #3b078f, #881717);
+    overflow-y: hidden;
 }
 .invoice{
     width: 500px;
