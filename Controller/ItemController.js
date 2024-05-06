@@ -36,11 +36,29 @@ $("#btnItemSave").on('click', function () {
     let qty = $("#itemQuantity").val();
 
     let itemObj = new ItemModel(itemCode, itemName, price, qty);
-    Items.push(itemObj);
-    alert("Item Saved!!");
-    clearFields();
-    loadItemTable();
+
+    // Display the custom confirmation dialog
+    $("#customConfirmMessage").text("Are you sure you want to save this item?");
+    $("#nav").hide();
+    $("#customConfirm").show();
+
+    // Event listener for the Yes button in the custom confirmation dialog
+    $("#confirmYesButton").on("click", function() {
+        // Add the item to the list and close the dialog
+        Items.push(itemObj);
+        clearFields();
+        loadItemTable();
+        $("#customConfirm").hide();
+    });
+
+    // Event listener for the Cancel button in the custom confirmation dialog
+    $("#confirmNoButton").on("click", function() {
+        // Close the dialog without saving the item
+        $("#customConfirm").hide();
+
+    });
 });
+
 $("#btnItemUpdate").on('click', function (){
     let itemCode = $("#Item_id").val();
     let itemName = $("#item_Name").val();

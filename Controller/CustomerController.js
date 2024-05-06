@@ -1,5 +1,5 @@
 import CustomerModel from "../Model/CustomerModel.js";
-import { Customers } from "../Db/Db.js";
+import {Customers, Items} from "../Db/Db.js";
 
 let customerTableClicked;
 function loadCustomerTable() {
@@ -22,10 +22,27 @@ $("#btnCustomerSave").on('click', function () {
     let address = $("#address").val();
 
     var CustomerObj = new CustomerModel(customerId, customerName, salary, address);
-    Customers.push(CustomerObj);
-    alert("Customer Saved!!");
-    clearFields();
-    loadCustomerTable();
+
+    // Display the custom confirmation dialog
+    $("#customConfirmMessage").text("Are you sure you want to save this item?");
+    $("#nav").hide();
+    $("#customConfirm").show();
+
+    // Event listener for the Yes button in the custom confirmation dialog
+    $("#confirmYesButton").on("click", function() {
+        // Add the item to the list and close the dialog
+        Customers.push(CustomerObj);
+        clearFields();
+        loadCustomerTable();
+        $("#customConfirm").hide();
+    });
+
+    // Event listener for the Cancel button in the custom confirmation dialog
+    $("#confirmNoButton").on("click", function() {
+        // Close the dialog without saving the item
+        $("#customConfirm").hide();
+
+    });
 });
 $("#CustomerTableBody").on('click','tr',function (){
     let index = $(this).index();
