@@ -41,7 +41,21 @@ $("#btnItemSave").on('click', function () {
     clearFields();
     loadItemTable();
 });
+$("#btnItemUpdate").on('click', function (){
 
+});
+$("#itemBtnDelete").on('click', function (){
+    Items.splice(itemTableClick,1);
+    alert("item Deleted!!");
+    clearFields();
+    loadItemTable();
+});
+$("#itemBtnReset").on('click', function (){
+    $("#Item_id").val("");
+    $("#item_Name").val("");
+    $("#item_Price").val("");
+    $("#itemQuantity").val("");
+});
 function clearFields() {
     $("#Item_id").val("");
     $("#item_Name").val("");
