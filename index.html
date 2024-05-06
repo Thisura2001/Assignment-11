@@ -107,68 +107,66 @@
         </div>
     </div>
 </section>
-    <!--Item section-->
-    <section class="sec3" id="items">
-        <div class="ItemLabel">
-            <img src="assests/icons8-item-48.png" style="width: 100px; height: 100px;" alt="item">
-            <p style="display: inline-block">Items</p>
-        </div>
-        <!--form-->
-        <div class="container">
-            <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col12">
-                <form class="from">
-                    <div class="mb-3">
-                        <label for="Item_id" class="form-label" style="color:white;">Item_code</label>
-                        <input type="number" class="form-control" id="Item_id">
-                    </div>
+<!--Item section-->
+<section class="sec3" id="items">
+    <div class="ItemLabel">
+        <img src="assests/icons8-item-48.png" style="width: 100px; height: 100px;" alt="item">
+        <p style="display: inline-block">Items</p>
+    </div>
+    <!--form-->
+    <div class="container">
+        <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col12">
+            <form class="from">
+                <div class="mb-3">
+                    <label for="Item_id" class="form-label" id="itemCode" style="color:white;">Item_code</label>
+                    <input type="number" class="form-control" id="Item_id">
+                </div>
 
-                    <div class="mb-3">
-                        <label for="item" class="form-label" style="color:white;" >Item_name</label>
-                        <input type="text" class="form-control" id="item">
-                    </div>
+                <div class="mb-3">
+                    <label for="item_Name" class="form-label" style="color:white;" >Item_name</label>
+                    <input type="text" class="form-control" id="item_Name" >
+                </div>
 
-                    <div class="mb-3">
-                        <label for="Price" class="form-label" style="color:white;">Price</label>
-                        <input type="text" class="form-control" id="Price">
-                    </div>
+                <div class="mb-3">
+                    <label for="item_Price" class="form-label"  style="color:white;">Price</label>
+                    <input type="text" class="form-control" id="item_Price">
+                </div>
 
-                    <div class="mb-3">
-                        <label  for="qty" class="form-label" style="color:white;">Quantity</label>
-                        <textarea class="form-control" id="qty" style="height: 100px; width: 150px; "></textarea>
-                    </div>
+                <div class="mb-3">
+                    <label for="itemQuantity" class="form-label"  style="color:white;">Quantity</label>
+                    <textarea class="form-control" id="itemQuantity"style="height: 100px; width: 150px;"></textarea>
+                </div>
 
-                    <div class="mt-4" >
-                        <button type="button" class="btn btn-warning">Save</button>
-                        <button type="button" class="btn btn-primary">Update</button>
-                        <button type="button" class="btn btn-danger">Delete</button>
-                    </div>
-                </form>
-            </div>
-            <form class="d-flex searchBar" role="search" style="width: 300px; height: 40px">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-success" type="submit" style="color:white;">Search</button>
+                <div class="mt-4">
+                    <button type="button" class="btn btn-warning" id="btnItemSave">Save</button>
+                    <button type="button" class="btn btn-primary" id="btnItemUpdate">Update</button>
+                    <button type="button" class="btn btn-danger" id="itemBtnDelete">Delete</button>
+                    <button type="button" class="btn btn-info" id="itemBtnReset">Reset</button>
+                </div>
             </form>
-            <!--Table-->
-            <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col12">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Item_code</th>
-                        <th scope="col">Item_name</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
-                    </tr>
-                    </thead>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Book</td>
-                        <td>150.00</td>
-                        <td>300</td>
-                    </tr>
-                </table>
-            </div>
         </div>
-    </section>
+        <form class="d-flex searchBar" role="search" style="width: 300px; height: 40px">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success" type="submit" style="color:white;">Search</button>
+        </form>
+        <!--Table-->
+        <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col12">
+            <table class="table" id="itemTable">
+                <thead>
+                <tr>
+                    <th scope="col">Item_code</th>
+                    <th scope="col">Item_name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                </tr>
+                </thead>
+                <tbody id="itemTableBody">
+                <!-- Item records will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
 <!--Place order section-->
     <section class="sec4" id="orders">
     <!--invoice form-->
