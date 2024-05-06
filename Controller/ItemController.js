@@ -28,7 +28,7 @@ $("#itemTableBody").on('click','tr',function (){
     $("#item_Price").val(price);
     $("#itemQuantity").val(qty);
 
-})
+});
 $("#btnItemSave").on('click', function () {
     let itemCode = $("#Item_id").val();
     let itemName = $("#item_Name").val();
@@ -42,7 +42,17 @@ $("#btnItemSave").on('click', function () {
     loadItemTable();
 });
 $("#btnItemUpdate").on('click', function (){
+    let itemCode = $("#Item_id").val();
+    let itemName = $("#item_Name").val();
+    let price = $("#item_Price").val();
+    let qty = $("#itemQuantity").val();
 
+    Items[itemTableClick].itemName = itemName;
+    Items[itemTableClick].price = price;
+    Items[itemTableClick].qty = qty;
+    alert("Item Updated !!");
+    clearFields();
+    loadItemTable();
 });
 $("#itemBtnDelete").on('click', function (){
     Items.splice(itemTableClick,1);
