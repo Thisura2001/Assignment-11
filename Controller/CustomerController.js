@@ -35,6 +35,7 @@ $("#btnCustomerSave").on('click', function () {
         clearFields();
         loadCustomerTable();
         $("#customConfirm").hide();
+        $("#nav").show();
     });
 
     // Event listener for the Cancel button in the custom confirmation dialog
