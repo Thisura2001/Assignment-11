@@ -60,6 +60,7 @@ body{
     position: relative;
     background: linear-gradient(to right top, #3b078f, #881717);
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 .sec4{
     width: 100vw;
@@ -322,4 +323,138 @@ body{
     background-color: #dc3545;
     color: white;
     margin-left: 10px;
+}
+#placeOrderText1{
+    border: 2px solid grey;
+    border-radius: 10px;
+    background-color: grey;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    margin-bottom: 10px;
+}
+
+#placeOrderText2{
+    border: 2px solid grey;
+    border-radius: 10px;
+    background-color: grey;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+#placeOrderText3{
+    border: 2px solid grey;
+    border-radius: 10px;
+    background-color: grey;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+
+#customerbtns{
+    margin-bottom: 30px;
+}
+
+#storebtns{
+    margin-bottom: 30px;
+}
+
+#placeOrderbtns{
+    margin-bottom: 30px;
+}
+
+#placeOrderbtns2>button:nth-child(1){
+    width: 140px;
+}
+
+#placeOrderbtns3>button:nth-child(1){
+    width: 100px;
+    background-color: #6c757d;
+    color: white;
+}
+
+#customerbtns>button:nth-child(1):hover,
+#customerbtns>button:nth-child(2):hover,
+#customerbtns>button:nth-child(3):hover,
+#customerbtns>button:nth-child(4):hover,
+#storebtns>button:nth-child(1):hover,
+#storebtns>button:nth-child(2):hover,
+#storebtns>button:nth-child(3):hover,
+#storebtns>button:nth-child(4):hover,
+#placeOrderbtns>button:nth-child(1):hover,
+#placeOrderbtns2>button:nth-child(1):hover,
+#placeOrderbtns3>button:nth-child(1):hover{
+    letter-spacing: 1px;
+    color: white;
+}
+
+#ItemNameDiv{
+    display: inline-block;
+    border: 1px solid grey;
+    width: 325px;
+    border-radius: 5px;
+}
+
+#ItemQutDiv{
+    display: inline-block;
+    border: 1px solid grey;
+    width: 145px;
+    border-radius: 5px;
+}
+
+#ItemPriceDiv{
+    display: inline-block;
+    border: 1px solid grey;
+    width: 120px;
+    border-radius: 5px;
+}
+
+.removeButton{
+    background-color: red;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    width: 57px;
+    height: 29px;
+    padding: 0;
+}
+
+#currentDate{
+    font-size: 24px;
+    margin-right: 46px;
+    color: white;
+}
+#placeOrder{
+    font-size: 50px;
+    color: #007bff;
+    font-weight: bolder;;
+    margin-top: 40px;
+    margin-left: 500px;
+}
+#tblPalceOrder {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    overflow-x: auto; /* Add horizontal scroll if needed */
+}
+
+#tblPalceOrder th, #tblPalceOrder td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    min-width: 120px; /* Set minimum width for cells */
+}
+
+#tblPalceOrder th {
+    background-color: #f2f2f2;
+    color: black;
+}
+
+#tblPalceOrder tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#tblPalceOrder tr:hover {
+    background-color: #dddddd;
+}
+
+#total, #tot {
+    color: white;
+    /* Your additional styles for total and total amount */
 }
