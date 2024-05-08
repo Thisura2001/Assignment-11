@@ -29,11 +29,32 @@ $("#itemTableBody").on('click','tr',function (){
     $("#itemQuantity").val(qty);
 
 });
+const itemCodeRegex = /^\d+$/;
+const itemNameRegex = /^[a-zA-Z\s]+$/;
+const priceRegex = /^[\d\s]+$/;
+const qtyRegex = /^[\d\s]+$/;
 $("#btnItemSave").on('click', function () {
     let itemCode = $("#Item_id").val();
     let itemName = $("#item_Name").val();
     let price = $("#item_Price").val();
     let qty = $("#itemQuantity").val();
+
+    if (!itemCodeRegex.test(itemCode)) {
+        alert("Invalid Item Code. Only digits are allowed.");
+        return;
+    }
+    if (!itemNameRegex.test(itemName)) {
+        alert("Invalid Item Name. Only letters and spaces are allowed.");
+        return;
+    }
+    if (!priceRegex.test(price)) {
+        alert("Invalid Price. Only numbers are allowed.");
+        return;
+    }
+    if (!qtyRegex.test(qty)) {
+        alert("Invalid Quantity. Only numbers are allowed.");
+        return;
+    }
 
     let itemObj = new ItemModel(itemCode, itemName, price, qty);
 
@@ -65,6 +86,23 @@ $("#btnItemUpdate").on('click', function (){
     let itemName = $("#item_Name").val();
     let price = $("#item_Price").val();
     let qty = $("#itemQuantity").val();
+
+    if (!itemCodeRegex.test(itemCode)) {
+        alert("Invalid Item Code. Only digits are allowed.");
+        return;
+    }
+    if (!itemNameRegex.test(itemName)) {
+        alert("Invalid Item Name. Only letters and spaces are allowed.");
+        return;
+    }
+    if (!priceRegex.test(price)) {
+        alert("Invalid Price. Only numbers are allowed.");
+        return;
+    }
+    if (!qtyRegex.test(qty)) {
+        alert("Invalid Quantity. Only numbers are allowed.");
+        return;
+    }
 
     Items[itemTableClick].itemName = itemName;
     Items[itemTableClick].price = price;
