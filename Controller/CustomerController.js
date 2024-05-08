@@ -14,12 +14,33 @@ function loadCustomerTable() {
         $("#CustomerTableBody").append(record);
     });
 }
+const customerIdRegex = /^\d+$/; // Only digits allowed
+const customerNameRegex = /^[a-zA-Z\s]+$/; // Only letters and spaces allowed
+const salaryRegex = /^[\d\s]+$/;
+const addressRegex = /^[a-zA-Z0-9\s,.'-]{3,}$/; // Letters, digits, and some special characters allowed
 
 $("#btnCustomerSave").on('click', function () {
     let customerId = $("#cus_id").val();
     let customerName = $("#name").val();
     let salary = $("#salary").val();
     let address = $("#address").val();
+
+    if (!customerIdRegex.test(customerId)) {
+        alert("Invalid Customer Id. Only digits are allowed.");
+        return;
+    }
+    if (!customerNameRegex.test(customerName)) {
+        alert("Invalid Customer Name. Only letters and spaces are allowed.");
+        return;
+    }
+    if (!salaryRegex.test(salary)) {
+        alert("Invalid Salary. Only numbers are allowed.");
+        return;
+    }
+    if (!addressRegex.test(address)) {
+        alert("Invalid Address. Only letters, digits, and some special characters are allowed.");
+        return;
+    }
 
     var CustomerObj = new CustomerModel(customerId, customerName, salary, address);
 
@@ -65,6 +86,23 @@ $("#btnCustomerUpdate").on('click',function (){
     let salary = $("#salary").val();
     let address = $("#address").val();
 
+    if (!customerIdRegex.test(customerId)) {
+        alert("Invalid Customer Id. Only digits are allowed.");
+        return;
+    }
+    if (!customerNameRegex.test(customerName)) {
+        alert("Invalid Customer Name. Only letters and spaces are allowed.");
+        return;
+    }
+    if (!salaryRegex.test(salary)) {
+        alert("Invalid Salary. Only numbers are allowed.");
+        return;
+    }
+    if (!addressRegex.test(address)) {
+        alert("Invalid Address. Only letters, digits, and some special characters are allowed.");
+        return;
+    }
+
     Customers[customerTableClicked].customerName =customerName;
     Customers[customerTableClicked].salary =salary;
     Customers[customerTableClicked].address = address;
@@ -84,6 +122,7 @@ $("#btnCustomerDelete").on('click',function (){
     clearFields();
     loadCustomerTable();
 });
+
 function clearFields() {
     $("#cus_id").val("");
     $("#name").val("");

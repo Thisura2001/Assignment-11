@@ -86,7 +86,7 @@
             </form>
         </div>
         <form class="d-flex searchBar" role="search" style="width: 300px; height: 40px">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchInput">
             <button class="btn btn-success" type="submit" style="color:white;">Search</button>
         </form>
         <!--Table-->
@@ -288,7 +288,7 @@
 
                         <div id="placeOrderText2">
                             <div class="m-lg-3">
-                                <label for="select" class="form-label"style="color:white;">Select Item ID</label>
+                                <label for="select" class="form-label" style="color:white;">Select Item ID</label>
                                 <select id="select" class="form-select mb-3" aria-label="Default select example"></select>
 
                                 <div id="ItemNameDiv">
@@ -297,7 +297,7 @@
                                 </div>
 
                                 <div id="ItemQutDiv">
-                                    <label for="itemQut" class="form-label"style="color:white;">  Hand On Quantity :</label>
+                                    <label for="itemQut" class="form-label" style="color:white;">  Hand On Quantity :</label>
                                     <h5 id="itemQut">_____________</h5>
                                 </div>
 
@@ -325,10 +325,10 @@
                         <thead>
                         <tr>
                             <th class="table-heading" scope="col">Item_ID</th>
+                            <th class="table-heading" scope="col">ItemName</th>
                             <th class="table-heading" scope="col">Unite_Price</th>
                             <th class="table-heading" scope="col">Quantity</th>
                             <th class="table-heading" scope="col">Total</th>
-                            <th class="table-heading" scope="col">Status</th>
                         </tr>
                         </thead>
                         <tbody class="table-tr" id="placeOrder-tbody"></tbody>
@@ -359,6 +359,6 @@
 <script src="assests/js/single-page.js"></script>
 <script src="Controller/CustomerController.js" type="module"></script>
 <script src="Controller/ItemController.js" type="module"></script>
-<script src="Controller/OrderController.js" type="module"></script>
+<script src="Controller/placeOrderController.js" type="module"></script>
 </body>
 </html>
