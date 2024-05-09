@@ -50,8 +50,7 @@ $("#btnCustomerSave").on('click', function () {
     $("#customConfirm").show();
 
     // Event listener for the Yes button in the custom confirmation dialog
-    $("#confirmYesButton").on("click", function() {
-        // Add the item to the list and close the dialog
+    $("#confirmYesButton").off().on("click", function() {
         Customers.push(CustomerObj);
         clearFields();
         loadCustomerTable();
@@ -59,13 +58,13 @@ $("#btnCustomerSave").on('click', function () {
         $("#nav").show();
     });
 
-    // Event listener for the Cancel button in the custom confirmation dialog
-    $("#confirmNoButton").on("click", function() {
-        // Close the dialog without saving the item
+
+    $("#confirmNoButton").off().on("click", function() {
         $("#customConfirm").hide();
 
     });
 });
+
 $("#CustomerTableBody").on('click','tr',function (){
     let index = $(this).index();
     customerTableClicked = index;

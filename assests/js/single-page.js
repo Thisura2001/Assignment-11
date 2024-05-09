@@ -1,3 +1,8 @@
+
+$("#home").css({display:'block'})
+$("#customer").css({display:'none'})
+$("#items").css({display:'none'})
+$("#orders").css({display:'none'})
 $("#nav-home").on('click',function (){
     $("#home").css({display:'block'})
     $("#customer").css({display:'none'})

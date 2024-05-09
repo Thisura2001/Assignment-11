@@ -169,103 +169,6 @@
 </section>
 <!--Place order section-->
     <section class="sec4" id="orders">
-<!--    &lt;!&ndash;invoice form&ndash;&gt;-->
-<!--    <div class="invoice">-->
-<!--        <form>-->
-<!--            <h4 class="invoiceLabel">invoice Details</h4>-->
-<!--            <div class="mb-3">-->
-<!--                <label for="Invoice_id" class="form-label orderIdLabel">Order_id</label>-->
-<!--                <input type="number" class="form-control orderId" id="Invoice_id">-->
-<!--            </div>-->
-<!--            <div class="mb-3">-->
-<!--                <label for="date" class="form-label dateLabel">Date</label>-->
-<!--                <input type="date" class="form-control date" id="date">-->
-<!--            </div>-->
-<!--            <div class="mb-3">-->
-<!--                <label for="customerId" class="form-label customerIdLabel">Customer_id</label>-->
-<!--                <input type="number" class="form-control customerId" id="customerId">-->
-<!--            </div>-->
-<!--            <div class="mb-3 input-group-sm col-12">-->
-<!--                <select class="form-select customerName" aria-label="Default select example" id="cmbItemIDs"></select>-->
-<!--            </div>-->
-<!--            <div class="mb-3">-->
-<!--                <label for="customerName1" class="form-label customerNameLabel1">Customer_name</label>-->
-<!--                <input type="text" class="form-control CustomerName1" id="customerName1">-->
-<!--            </div>-->
-<!--            <div class="mb-3">-->
-<!--                <label for="customerSalary" class="form-label salaryLabel">salary</label>-->
-<!--                <input type="text" class="form-control salary" id="customerSalary">-->
-<!--            </div>-->
-<!--            <div class="mb-3">-->
-<!--                <label for="cusAddress" class="form-label addressLabel">Address</label>-->
-<!--                <input type="text" class="form-control address" id="cusAddress">-->
-<!--            </div>-->
-<!--        </form>-->
-<!--        &lt;!&ndash;Item form&ndash;&gt;-->
-<!--        <div class="itemBox">-->
-<!--            <form>-->
-<!--                <h4 class="itemLabel">Item Details</h4>-->
-<!--                <div class="mb-3 input-group-sm col-12">-->
-<!--                    <select class="form-select code" aria-label="Default select example" id="cmbItemId"></select>-->
-<!--                </div>-->
-<!--                <div class="mb-3">-->
-<!--                    <label for="itemName" class="form-label itemNameLabel">Item_name</label>-->
-<!--                    <input type="number" class="form-control itemName" id="itemName">-->
-<!--                </div>-->
-<!--                <div class="mb-3">-->
-<!--                    <label for="itemPrice" class="form-label priceLabel">Price</label>-->
-<!--                    <input type="number" class="form-control price" id="itemPrice">-->
-<!--                </div>-->
-<!--                <div class="mb-3">-->
-<!--                    <label for="qtyOnHand" class="form-label qtyOnHandLabel">Qty_On_Hand</label>-->
-<!--                    <input type="number" class="form-control qtyOnHand" id="qtyOnHand">-->
-<!--                </div>-->
-<!--                <div class="mb-3">-->
-<!--                    <label for="Itemqty" class="form-label qtyLabel">Order_QTY</label>-->
-<!--                    <input type="text" class="form-control qty" id="Itemqty">-->
-<!--                </div>-->
-<!--                <button type="button" class="btn btn-danger btnAdd">Add_Item</button>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--        <div class="total">-->
-<!--            <form>-->
-<!--                <br>-->
-<!--                <h3 id="total">&nbsp;&nbsp;Total : <span>0</span> </h3>-->
-<!--                <br>-->
-<!--                <h3 id="subtotal">&nbsp;&nbsp;SubTotal : <span>0</span> </h3>-->
-<!--                <br>-->
-<!--                <input type="text" class="form-control" id="cash" placeholder="cash...">-->
-
-<!--                <input type="text" class="form-control" id="discount" placeholder="discount(%)">-->
-<!--                <br>-->
-<!--                <br>-->
-<!--                <input type="text" class="form-control" id="balance" placeholder="balance...">-->
-<!--                <br><br>-->
-<!--                <button type="submit" class=" btn btn-success" id="btn-purchase-order">Purchase</button>-->
-<!--            </form>-->
-
-<!--        </div>-->
-<!--    </div>-->
-
-<!--    <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col12">-->
-<!--        <table class="table table-bordered border-primary tblOrder">-->
-<!--            <thead>-->
-<!--            <tr>-->
-<!--                <th scope="col">Order_id</th>-->
-<!--                <th scope="col">Item_code</th>-->
-<!--                <th scope="col">Order_date</th>-->
-<!--                <th scope="col">Item_name</th>-->
-<!--                <th scope="col">Quantity</th>-->
-<!--                <th scope="col">Total</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tr>-->
-
-
-<!--            </tr>-->
-<!--        </table>-->
-<!--        <button type="button" class="btn btn-warning btnPlaceOrder">Place_Order</button>-->
-<!--    </div>-->
         <div id="placeOrderForm" class="container">
             <p id="placeOrder">Place Order</p>
             <div class="row">
@@ -274,40 +177,39 @@
                     <form>
                         <div id="placeOrderText1">
                             <div class="mt-lg-2 mb-lg-2 m-lg-3">
-                                <label for="Order_id" class="form-label"style="color:white;">Order_ID</label>
+                                <label for="Order_id" class="form-label">Order_ID</label>
                                 <input type="number" class="form-control" id="Order_id">
                             </div>
                         </div>
 
                         <div id="placeOrderText3" class="mb-lg-2">
                             <div class="mt-lg-2 mb-lg-2 m-lg-3">
-                                <label for="selectCus_ID" class="form-label"style="color:white;">Customer_ID</label>
+                                <label for="selectCus_ID" class="form-label">Customer_ID</label>
                                 <select id="selectCus_ID" class="form-select mb-3" aria-label="Default select example"></select>
                             </div>
                         </div>
 
                         <div id="placeOrderText2">
                             <div class="m-lg-3">
-                                <label for="select" class="form-label" style="color:white;">Select Item ID</label>
+                                <label for="select" class="form-label">Select Item ID</label>
                                 <select id="select" class="form-select mb-3" aria-label="Default select example"></select>
 
                                 <div id="ItemNameDiv">
-                                    <label for="itemName" class="form-label"style="color:white;">  Item Name :</label>
-                                    <h5 id="itemName">______________________________</h5>
+                                    <label for="itemName" class="form-label">  Item Name :</label>
+                                    <h5 id="itemName">______________________</h5>
                                 </div>
 
                                 <div id="ItemQutDiv">
-                                    <label for="itemQut" class="form-label" style="color:white;">  Hand On Quantity :</label>
-                                    <h5 id="itemQut">_____________</h5>
+                                    <label for="itemQut" class="form-label">  Hand On Quantity :</label>
+                                    <h5 id="itemQut">___________</h5>
                                 </div>
 
                                 <div id="ItemPriceDiv">
-                                    <label for="itemPrice" class="form-label"style="color:white;">  Unite Price :</label>
+                                    <label for="itemPrice" class="form-label">  Unite Price :</label>
                                     <h5 id="itemPrice">___________</h5>
                                 </div>
-
                                 <div class="mb-3">
-                                    <label for="quantity_placeOrder" class="form-label"style="color:white;">Quantity</label>
+                                    <label for="quantity_placeOrder" class="form-label">Quantity</label>
                                     <input type="number" class="form-control" id="quantity_placeOrder">
                                 </div>
 

@@ -34,11 +34,13 @@ const itemNameRegex = /^[a-zA-Z\s]+$/;
 const priceRegex = /^[\d\s]+$/;
 const qtyRegex = /^[\d\s]+$/;
 $("#btnItemSave").on('click', function () {
+    // Retrieving values from input fields
     let itemCode = $("#Item_id").val();
     let itemName = $("#item_Name").val();
     let price = $("#item_Price").val();
     let qty = $("#itemQuantity").val();
 
+    // Validating input values using regular expressions
     if (!itemCodeRegex.test(itemCode)) {
         alert("Invalid Item Code. Only digits are allowed.");
         return;
@@ -58,14 +60,12 @@ $("#btnItemSave").on('click', function () {
 
     let itemObj = new ItemModel(itemCode, itemName, price, qty);
 
-    // Display the custom confirmation dialog
+    // Displaying a custom confirmation dialog
     $("#customConfirmMessage").text("Are you sure you want to save this item?");
     $("#nav").hide();
     $("#customConfirm").show();
 
-    // Event listener for the Yes button in the custom confirmation dialog
-    $("#confirmYesButton").on("click", function() {
-        // Add the item to the list and close the dialog
+    $("#confirmYesButton").one("click", function() {
         Items.push(itemObj);
         clearFields();
         loadItemTable();
@@ -74,12 +74,12 @@ $("#btnItemSave").on('click', function () {
     });
 
     // Event listener for the Cancel button in the custom confirmation dialog
-    $("#confirmNoButton").on("click", function() {
-        // Close the dialog without saving the item
+    $("#confirmNoButton").one("click", function() { // Change to "one" to execute the event listener only once
+        // Closing the dialog without saving the item
         $("#customConfirm").hide();
-
     });
 });
+
 
 $("#btnItemUpdate").on('click', function (){
     let itemCode = $("#Item_id").val();
