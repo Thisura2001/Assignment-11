@@ -22,7 +22,7 @@ $("#nav-item").on('click',function (){
     $("#items").css({display:'block'})
     $("#orders").css({display:'none'})
 });
-$("#nav-orders").on('click',function (){
+$("#nav-orders").on('click', ()=>{
     $("#home").css({display:'none'})
     $("#customer").css({display:'none'})
     $("#items").css({display:'none'})
