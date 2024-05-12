@@ -1,21 +1,22 @@
-import { Customers } from "../Db/Db.js";
+import { Customers, Items } from "../Db/Db.js";
 
-// Function to populate the customer ID combo box
-function populateCustomerIDs() {
-    const selectCus_ID = document.getElementById('selectCus_ID');
-    selectCus_ID.innerHTML = ''; // Clear existing options
+// Function to clear and populate customer IDs in the combo box
+function updateCustomerIDs() {
+    // Clear existing options before adding new ones
+    $('#selectCus_ID').empty();
 
+    // Populate the combo box with customer IDs
     Customers.forEach(customer => {
         const option = document.createElement("option");
-        option.value = customer.customerId;
+        option.value = JSON.stringify(customer);
         option.text = customer.customerId;
-        selectCus_ID.appendChild(option);
+        $('#selectCus_ID').append(option);
     });
 }
 
-// Event listener for customer ID combo box click
-$('#selectCus_ID').on('click', () => {
-    populateCustomerIDs(); // Repopulate the combo box with customer IDs
+// Attach event listener to the combo box when it receives focus
+$('#selectCus_ID').on('focus', () => {
+    updateCustomerIDs(); // Update the customer IDs in the combo box
 });
 
 // Event listener for customer ID combo box change
@@ -24,13 +25,11 @@ $('#selectCus_ID').on('change', () => {
 
     if (selectedOption.length > 0) {
         const selectedCustomer = JSON.parse(selectedOption.val());
-        $('#customerId').val(selectedCustomer.customerName); // Assuming there's an element with the ID 'customerId'
+        const name = selectedCustomer.customerName;
+
+        // Set the appropriate name when a customer ID is selected
+        $('#customerId').val(name); // Assuming there's an element with the ID 'customerId'
     } else {
         console.log('No option selected');
     }
-});
-
-// Event listener for items combo box change
-$('#selectItems').on('change', () => {
-    // Add logic for handling item selection
 });
