@@ -51,3 +51,28 @@ $('#select').on('change', () => {
         $('#quantity_placeOrder').focus();
     }
 });
+let lastOrderId = 0;
+$("#Order_id").on('click', function () {
+    lastOrderId++;
+    $("#Order_id").val(lastOrderId);
+});
+
+$("#placeOrderBtnReset").on('click',function (){
+    $("#selectCus_ID").val("");
+    $("#select").val("");
+    $("#itemName").text("");
+    $("#itemQut").text("");
+    $("#itemPrice").text("");
+    $("#quantity_placeOrder").val("");
+})
+$("#btnAdd").on('click', function () {
+
+});
+function ClearFields() {
+    $("#selectCus_ID").val("");
+    $("#select").val("");
+    $("#itemName").text("");
+    $("#itemQut").text("");
+    $("#itemPrice").text("");
+    $("#quantity_placeOrder").val("");
+}
