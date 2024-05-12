@@ -16,20 +16,5 @@ function updateCustomerIDs() {
 
 // Attach event listener to the combo box when it receives focus
 $('#selectCus_ID').on('focus', () => {
-    updateCustomerIDs(); // Update the customer IDs in the combo box
-});
-
-// Event listener for customer ID combo box change
-$('#selectCus_ID').on('change', () => {
-    const selectedOption = $('#selectCus_ID option:selected');
-
-    if (selectedOption.length > 0) {
-        const selectedCustomer = JSON.parse(selectedOption.val());
-        const name = selectedCustomer.customerName;
-
-        // Set the appropriate name when a customer ID is selected
-        $('#customerId').val(name); // Assuming there's an element with the ID 'customerId'
-    } else {
-        console.log('No option selected');
-    }
+    updateCustomerIDs();
 });
