@@ -1,7 +1,5 @@
 import { Customers, Items } from "../Db/Db.js";
 
-let ItemIndexElement;
-// Set the customer IDs in the combo box
 function updateCustomerIDs() {
     $('#selectCus_ID').empty();
     const defaultOption = document.createElement("option");
@@ -35,12 +33,10 @@ function updateItemIDs() {
     });
 }
 
-// Update item IDs when the dropdown receives focus
 $('#select').on('focus', () => {
     updateItemIDs();
 });
 
-// Event listener for item selection change
 $('#select').on('change', () => {
     const selectedOption = $('#select option:selected');
 
