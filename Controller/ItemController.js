@@ -42,42 +42,46 @@ $("#btnItemSave").on('click', function () {
 
     // Validating input values using regular expressions
     if (!itemCodeRegex.test(itemCode)) {
-        alert("Invalid Item Code. Only digits are allowed.");
+        swal.fire({
+            icon: 'error',
+            title: 'Invalid Item Code',
+            text: 'Only digits are allowed.'
+        });
         return;
     }
     if (!itemNameRegex.test(itemName)) {
-        alert("Invalid Item Name. Only letters and spaces are allowed.");
+        swal.fire({
+            icon: 'error',
+            title: 'Invalid Item Name',
+            text: 'Only letters and spaces are allowed.'
+        });
         return;
     }
     if (!priceRegex.test(price)) {
-        alert("Invalid Price. Only numbers are allowed.");
+        swal.fire({
+            icon: 'error',
+            title: 'Invalid Price',
+            text: 'Only numbers are allowed.'
+        });
         return;
     }
     if (!qtyRegex.test(qty)) {
-        alert("Invalid Quantity. Only numbers are allowed.");
+        swal.fire({
+            icon: 'error',
+            title: 'Invalid Quantity',
+            text: 'Only numbers are allowed.'
+        });
         return;
     }
 
     let itemObj = new ItemModel(itemCode, itemName, price, qty);
-
-    // Displaying a custom confirmation dialog
-    $("#customConfirmMessage").text("Are you sure you want to save this item?");
-    $("#nav").hide();
-    $("#customConfirm").show();
-
-    $("#confirmYesButton").one("click", function() {
-        Items.push(itemObj);
-        clearFields();
-        loadItemTable();
-        $("#customConfirm").hide();
-        $("#nav").show();
+    Items.push(itemObj);
+    swal.fire({
+        icon: 'success',
+        title: 'Item Saved Successfully'
     });
-
-    // Event listener for the Cancel button in the custom confirmation dialog
-    $("#confirmNoButton").one("click", function() { // Change to "one" to execute the event listener only once
-        // Closing the dialog without saving the item
-        $("#customConfirm").hide();
-    });
+    clearFields();
+    loadItemTable();
 });
 
 
@@ -88,32 +92,54 @@ $("#btnItemUpdate").on('click', function (){
     let qty = $("#itemQuantity").val();
 
     if (!itemCodeRegex.test(itemCode)) {
-        alert("Invalid Item Code. Only digits are allowed.");
+        swal.fire({
+            icon: 'error',
+            title: 'Invalid Item Code',
+            text: 'Only digits are allowed.'
+        });
         return;
     }
     if (!itemNameRegex.test(itemName)) {
-        alert("Invalid Item Name. Only letters and spaces are allowed.");
+        swal.fire({
+            icon: 'error',
+            title: 'Invalid Item Name',
+            text: 'Only letters and spaces are allowed.'
+        });
         return;
     }
     if (!priceRegex.test(price)) {
-        alert("Invalid Price. Only numbers are allowed.");
+        swal.fire({
+            icon: 'error',
+            title: 'Invalid Price',
+            text: 'Only numbers are allowed.'
+        });
         return;
     }
     if (!qtyRegex.test(qty)) {
-        alert("Invalid Quantity. Only numbers are allowed.");
+        swal.fire({
+            icon: 'error',
+            title: 'Invalid Quantity',
+            text: 'Only numbers are allowed.'
+        });
         return;
     }
 
     Items[itemTableClick].itemName = itemName;
     Items[itemTableClick].price = price;
     Items[itemTableClick].qty = qty;
-    alert("Item Updated !!");
+    swal.fire({
+        icon: 'success',
+        title: 'Item Updated Successfully'
+    })
     clearFields();
     loadItemTable();
 });
 $("#itemBtnDelete").on('click', function (){
     Items.splice(itemTableClick,1);
-    alert("item Deleted!!");
+    swal.fire({
+        icon: 'success',
+        title: 'Item Deleted Successfully'
+    })
     clearFields();
     loadItemTable();
 });

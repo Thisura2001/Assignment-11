@@ -19,6 +19,7 @@ const customerNameRegex = /^[a-zA-Z\s]+$/; // Only letters and spaces allowed
 const salaryRegex = /^[\d\s]+$/;
 const addressRegex = /^[a-zA-Z0-9\s,.'-]{3,}$/; // Letters, digits, and some special characters allowed
 
+// Event listener for the "Save Customer" button
 $("#btnCustomerSave").on('click', function () {
     let customerId = $("#cus_id").val();
     let customerName = $("#name").val();
@@ -26,43 +27,46 @@ $("#btnCustomerSave").on('click', function () {
     let address = $("#address").val();
 
     if (!customerIdRegex.test(customerId)) {
-        alert("Invalid Customer Id. Only digits are allowed.");
+        swal.fire({
+            icon: 'error',
+            title: 'Invalid Customer Id',
+            text: 'Only digits are allowed.'
+        })
         return;
     }
     if (!customerNameRegex.test(customerName)) {
-        alert("Invalid Customer Name. Only letters and spaces are allowed.");
+        swal.fire({
+            icon: 'error',
+            title: 'Invalid Customer Name',
+            text: 'Only letters and spaces are allowed.'
+        })
         return;
     }
     if (!salaryRegex.test(salary)) {
-        alert("Invalid Salary. Only numbers are allowed.");
+        swal.fire({
+            icon: 'error',
+            title: 'Invalid Salary',
+            text: 'Only numbers are allowed.'
+        })
         return;
     }
     if (!addressRegex.test(address)) {
-        alert("Invalid Address. Only letters, digits, and some special characters are allowed.");
+        swal.fire({
+            icon: 'error',
+            title: 'Invalid Address',
+            text: 'Only letters, digits, and some special characters are allowed.'
+        })
         return;
     }
 
     var CustomerObj = new CustomerModel(customerId, customerName, salary, address);
-
-    // Display the custom confirmation dialog
-    $("#customConfirmMessage").text("Are you sure you want to save this item?");
-    $("#nav").hide();
-    $("#customConfirm").show();
-
-    // Event listener for the Yes button in the custom confirmation dialog
-    $("#confirmYesButton").off().on("click", function() {
-        Customers.push(CustomerObj);
-        clearFields();
-        loadCustomerTable();
-        $("#customConfirm").hide();
-        $("#nav").show();
-    });
-
-
-    $("#confirmNoButton").off().on("click", function() {
-        $("#customConfirm").hide();
-
-    });
+    Customers.push(CustomerObj);
+       swal.fire({
+           icon: 'success',
+           title: 'Customer Added Successfully',
+       });
+    clearFields();
+    loadCustomerTable();
 });
 
 $("#CustomerTableBody").on('click','tr',function (){
@@ -86,26 +90,45 @@ $("#btnCustomerUpdate").on('click',function (){
     let address = $("#address").val();
 
     if (!customerIdRegex.test(customerId)) {
-        alert("Invalid Customer Id. Only digits are allowed.");
+        swal.fire({
+            icon: 'error',
+            title: 'Invalid Customer Id',
+            text: 'Only digits are allowed.'
+        })
         return;
     }
     if (!customerNameRegex.test(customerName)) {
-        alert("Invalid Customer Name. Only letters and spaces are allowed.");
+        swal.fire({
+            icon: 'error',
+            title: 'Invalid Customer Name',
+            text: 'Only letters and spaces are allowed.'
+        })
         return;
     }
     if (!salaryRegex.test(salary)) {
-        alert("Invalid Salary. Only numbers are allowed.");
+        swal.fire({
+            icon: 'error',
+            title: 'Invalid Salary',
+            text: 'Only numbers are allowed.'
+        })
         return;
     }
     if (!addressRegex.test(address)) {
-        alert("Invalid Address. Only letters, digits, and some special characters are allowed.");
+        swal.fire({
+            icon: 'error',
+            title: 'Invalid Address',
+            text: 'Only letters, digits, and some special characters are allowed.'
+        })
         return;
     }
 
     Customers[customerTableClicked].customerName =customerName;
     Customers[customerTableClicked].salary =salary;
     Customers[customerTableClicked].address = address;
-    alert("Customer Updated !!");
+    swal.fire({
+        icon: 'success',
+        title: 'Customer Updated Successfully',
+    })
     clearFields();
     loadCustomerTable();
 });
@@ -117,7 +140,10 @@ $("#btnCustomerReset").on('click',function (){
 });
 $("#btnCustomerDelete").on('click',function (){
     Customers.splice(customerTableClicked,1);
-    alert("Customer Deleted!!!");
+    swal.fire({
+        icon: 'success',
+        title: 'Customer Deleted Successfully',
+    })
     clearFields();
     loadCustomerTable();
 });
