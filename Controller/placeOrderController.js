@@ -119,6 +119,7 @@ $("#btnAdd").on('click', function () {
         </tr>`;
 
             $("#placeOrder-tbody").append(record);
+            ClearFields();
         } else {
             Swal.fire({
                 icon: 'error',
