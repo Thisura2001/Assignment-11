@@ -31,7 +31,7 @@ $("#itemTableBody").on('click','tr',function (){
 });
 const itemCodeRegex = /^\d+$/;
 const itemNameRegex = /^[a-zA-Z\s]+$/;
-const priceRegex = /^[\d\s]+$/;
+const priceRegex = /^[\d.\s]+$/;
 const qtyRegex = /^[\d\s]+$/;
 $("#btnItemSave").on('click', function () {
     // Retrieving values from input fields

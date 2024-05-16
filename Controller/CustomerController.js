@@ -16,7 +16,7 @@ function loadCustomerTable() {
 }
 const customerIdRegex = /^\d+$/; // Only digits allowed
 const customerNameRegex = /^[a-zA-Z\s]+$/; // Only letters and spaces allowed
-const salaryRegex = /^[\d\s]+$/;
+const salaryRegex = /^[\d.\s]+$/;
 const addressRegex = /^[a-zA-Z0-9\s,.'-]{3,}$/; // Letters, digits, and some special characters allowed
 
 // Event listener for the "Save Customer" button
