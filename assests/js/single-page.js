@@ -45,7 +45,5 @@ function scheduleDateUpdate() {
         scheduleDateUpdate();
     }, delay);
 }
-
-// Initialize the date immediately on page load
 updateDate();
 scheduleDateUpdate();
