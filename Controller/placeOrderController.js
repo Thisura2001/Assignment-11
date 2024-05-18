@@ -17,7 +17,7 @@ function updateCustomerIDs() {
     $('#selectCus_ID').empty();
     const defaultOption = document.createElement("option");
 
-    defaultOption.text = "Select Customer Id";
+    defaultOption.text = "";
     $('#selectCus_ID').append(defaultOption);
 
     Customers.forEach(customer => {
@@ -185,13 +185,17 @@ $("#place_Order").on('click',()=>{
         $('#amount').val("");
         $('#tot').text(0);
 
-        let date = $('#currentDate').text();
-        let orderID = $('#Order_id').val();
-        let cusID = $('#selectCus_ID').val();
+        let date = $('#currentDateTime').text();
+        let orderID = $('#Order_id').text();
+        let cusID = $('#selectCus_ID').text();
 
-        let recode = `<tr><td class='date'>${date}</td><td class='order_id'>${orderID}</td><td class='cus_id'>${cusID}</td><td class='net_total'>${netTotal}</td></tr>`
-        $("#OrderHistory-tbody").append(recode);
-
+        let recode = `<tr>
+            <td class='orderId'>${orderID}</td>
+            <td class='customerId'>${cusID}</td>
+            <td class='date'>${date}</td>
+            <td class='net_total'>${netTotal}</td>
+</tr>`
+        $("#tblSearchOrder").append(recode);
     } else {
         Swal.fire({
             icon: 'error',
