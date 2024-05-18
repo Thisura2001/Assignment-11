@@ -434,11 +434,23 @@ body{
     overflow-x: auto; /* Add horizontal scroll if needed */
 }
 
-#tblPalceOrder th, #tblPalceOrder td {
+#tblPalceOrder th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
     min-width: 120px; /* Set minimum width for cells */
+}
+#tblPalceOrder td{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    min-width: 120px; /* Set minimum width for cells */
+    background-color: white;
+}
+#tblPalceOrder td:nth-child(4){
+    position: relative;
+    left: 0;
+    top: 0;
 }
 
 #tblPalceOrder th {
@@ -448,13 +460,4 @@ body{
 
 #tblPalceOrder tr:nth-child(even) {
     background-color: #f2f2f2;
-}
-
-#tblPalceOrder tr:hover {
-    background-color: #dddddd;
-}
-
-#total, #tot {
-    color: white;
-    /* Your additional styles for total and total amount */
 }
