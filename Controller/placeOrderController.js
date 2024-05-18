@@ -206,8 +206,8 @@ $("#place_Order").on('click',()=>{
 function ClearFields() {
     $("#selectCus_ID").val("");
     $("#select").val("");
-    $("#itemName").text("______________________________");
-    $("#itemQut").text("_____________");
-    $("#itemPrice").text("___________");
+    $("#itemName").text("");
+    $("#itemQut").text("");
+    $("#itemPrice").text("");
     $("#quantity_placeOrder").val("");
 }
