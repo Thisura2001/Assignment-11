@@ -94,8 +94,8 @@
             </form>
         </div>
         <form class="d-flex searchBar" role="search" style="width: 300px; height: 40px">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchInput">
-            <button class="btn btn-success" type="submit" style="color:white;">Search</button>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchInput" style="visibility: hidden">
+            <button class="btn btn-success" type="submit" style="color:white; visibility: hidden">Search</button>
         </form>
         <!--Table-->
         <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col12">
@@ -154,8 +154,8 @@
             </form>
         </div>
         <form class="d-flex searchBar" role="search" style="width: 300px; height: 40px">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-success" type="submit" style="color:white;">Search</button>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="visibility: hidden">
+            <button class="btn btn-success" type="submit" style="color:white; visibility: hidden">Search</button>
         </form>
         <!--Table-->
         <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col12">
@@ -250,8 +250,10 @@
 <!--                            <td>ok</td>-->
 <!--                        </tr>-->
                     </table>
-                    <p id="total" class="fs-2" style="color:#0caf3a;">Total :</p>
-                    <h2 id="tot" style="color:#0caf3a;">0</h2>
+                    <div id="total-container">
+                        <span id="total">Total Rs:</span>
+                        <h2 id="tot">0.0</h2>
+                    </div>
                     <label for="amount"></label>
                     <input id="amount" type="number" class="form-control" placeholder="Amount">
 
@@ -262,14 +264,6 @@
             </div>
         </div>
 </section>
-<!-- Custom Confirmation Dialog -->
-<div id="customConfirm" class="custom-confirm">
-    <div class="custom-confirm-content">
-        <span id="customConfirmMessage"></span>
-        <button id="confirmYesButton">Yes</button>
-        <button id="confirmNoButton">No</button>
-    </div>
-</div>
 
 <script src="assests/lib/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

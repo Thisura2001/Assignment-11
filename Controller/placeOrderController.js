@@ -123,42 +123,91 @@ $("#btnAdd").on('click', function () {
         } else {
             Swal.fire({
                 icon: 'error',
-                title: 'The quantity is not enough!',
+                title: 'We Don\'t have that much Quantity!',
                 text: 'Something went wrong!'
             });
         }
     }
 
     let netTot = 0;
-    $("#placeOrder-tbody tr").each(function() {
-        netTot += parseFloat($(this).find('.price').text());
-    });
 
-    $("#tot").text(netTot);
+    function updateNetTotal() {
+        netTot = 0;
+        $("#placeOrder-tbody tr").each(function() {
+            netTot += parseFloat($(this).find('.price').text());
+        });
+        $("#tot").text(netTot.toFixed(2));
+    }
+
+    updateNetTotal();
 
     $(".removeButton").on("click", function() {
         $(this).closest('tr').remove();
-
-        let newNetTot = 0;
-        $("#placeOrder-tbody tr").each(function() {
-            newNetTot += parseFloat($(this).find('.price').text());
-        });
-
-        $("#tot").text(newNetTot);
+        updateNetTotal();
     });
+
 
     $('#itemName').text("______________________________");
     $('#itemQut').text("_____________");
     $('#itemPrice').text("___________");
 });
 $("#place_Order").on('click',()=>{
+    let amount = parseFloat($('#amount').val());
+    let netTotal = parseFloat($('#tot').text());
 
+    $("#placeOrder-tbody tr").each(function() {
+        let quantity = parseFloat($(this).find('.quantity').text());
+        let item_id = $(this).find('.item_id').text();
+
+        let index = Items.findIndex(item => item.itemCode === item_id);
+
+        if (index !== -1) {
+            let newQuantity = Items[index].qty - quantity;
+
+            if (newQuantity >= 0) {
+                Items[index].qty = newQuantity;
+            } else {
+                // Handle the case where the new quantity would be negative (out of stock)
+                console.log("Error: Not enough quantity in stock for item with ID " + item_id);
+            }
+        } else {
+            console.log("Item not found in item_db.");
+        }
+    });
+
+    if (amount >= netTotal) {
+        let cash = amount - netTotal;
+        Swal.fire({
+            icon: 'success',
+            title: `Order Successful! \n Cash: ${cash.toFixed(2)}`,
+            showConfirmButton: true
+        });
+        $('#placeOrderBtnReset').click();
+        $('#amount').val("");
+        $('#tot').text(0);
+
+        let date = $('#currentDate').text();
+        let orderID = $('#Order_id').val();
+        let cusID = $('#selectCus_ID').val();
+
+        let recode = `<tr><td class='date'>${date}</td><td class='order_id'>${orderID}</td><td class='cus_id'>${cusID}</td><td class='net_total'>${netTotal}</td></tr>`
+        $("#OrderHistory-tbody").append(recode);
+
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'The amount is not enough!',
+            text: 'Something went wrong!'
+        });
+    }
+    loadDataTable();
 });
+
 function ClearFields() {
     $("#selectCus_ID").val("");
     $("#select").val("");
-    $("#itemName").text("");
-    $("#itemQut").text("");
-    $("#itemPrice").text("");
+    $("#itemName").text("______________________________");
+    $("#itemQut").text("_____________");
+    $("#itemPrice").text("___________");
     $("#quantity_placeOrder").val("");
 }
