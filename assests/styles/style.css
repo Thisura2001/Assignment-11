@@ -7,6 +7,13 @@ body{
     font-weight: bolder;
     color: blue;
 }
+#currentDateTime {
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    font-size: 20px;
+    color: #0e5ce8;
+}
 .sec1{
     background-color: black;
     width: 100vw;

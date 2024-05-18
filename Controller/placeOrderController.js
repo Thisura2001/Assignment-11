@@ -151,6 +151,9 @@ $("#btnAdd").on('click', function () {
     $('#itemQut').text("_____________");
     $('#itemPrice').text("___________");
 });
+$("#place_Order").on('click',()=>{
+
+});
 function ClearFields() {
     $("#selectCus_ID").val("");
     $("#select").val("");

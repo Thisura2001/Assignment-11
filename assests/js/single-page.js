@@ -28,3 +28,24 @@ $("#nav-orders").on('click', ()=>{
     $("#items").css({display:'none'})
     $("#orders").css({display:'block'})
 });
+function updateDate() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    document.getElementById('currentDateTime').textContent = `${year}-${month}-${day}`;
+}
+
+// Update the date every day at midnight
+function scheduleDateUpdate() {
+    const now = new Date();
+    const delay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1) - now;
+    setTimeout(() => {
+        updateDate();
+        scheduleDateUpdate();
+    }, delay);
+}
+
+// Initialize the date immediately on page load
+updateDate();
+scheduleDateUpdate();
