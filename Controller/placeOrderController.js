@@ -27,7 +27,6 @@ function updateCustomerIDs() {
         $('#selectCus_ID').append(option);
     });
 }
-
 $('#selectCus_ID').on('focus', () => {
     updateCustomerIDs();
 });
@@ -210,4 +209,8 @@ function ClearFields() {
     $("#itemQut").text("");
     $("#itemPrice").text("");
     $("#quantity_placeOrder").val("");
+}
+window.onload = () => {
+    updateCustomerIDs();
+    updateItemIDs();
 }
