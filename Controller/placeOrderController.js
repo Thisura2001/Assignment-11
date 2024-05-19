@@ -17,7 +17,7 @@ function updateCustomerIDs() {
     $('#selectCus_ID').empty();
     const defaultOption = document.createElement("option");
 
-    defaultOption.text = "";
+    defaultOption.text = "Select Customer ID";
     $('#selectCus_ID').append(defaultOption);
 
     Customers.forEach(customer => {
@@ -181,16 +181,14 @@ $("#place_Order").on('click',()=>{
             title: `Order Successful! \n Cash: ${cash.toFixed(2)}`,
             showConfirmButton: true
         });
-        $('#placeOrderBtnReset').click();
-        $('#amount').val("");
-        $('#tot').text(0);
+       clearPlaceOrderTable();
 
         let date = $('#currentDateTime').text();
         let orderID = $('#Order_id').text();
         let cusID = $('#selectCus_ID').text();
 
         let recode = `<tr>
-            <td class='orderId'>${orderID}</td>
+            <td class='OrderId'>${orderID}</td>
             <td class='customerId'>${cusID}</td>
             <td class='date'>${date}</td>
             <td class='net_total'>${netTotal}</td>
@@ -217,4 +215,9 @@ function ClearFields() {
 window.onload = () => {
     updateCustomerIDs();
     updateItemIDs();
+}
+function clearPlaceOrderTable() {
+    $('#placeOrder-tbody').empty();
+    $('#tot').text(0.0);
+    $('#amount').val("");
 }
