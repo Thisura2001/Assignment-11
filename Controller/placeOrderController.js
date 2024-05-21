@@ -1,4 +1,4 @@
-import { Customers, Items } from "../Db/Db.js";
+import { Customers, Items,Orders } from "../Db/Db.js";
 
 
 const loadDataTable = () => {
@@ -81,6 +81,7 @@ $("#btnAdd").on('click', function () {
     let quantity = parseInt($("#quantity_placeOrder").val());
     let unit_price = parseFloat($("#itemPrice").text());
     let total = quantity * unit_price;
+    let discount = total * 0.20;
 
     let existingRow = $(`#placeOrder-tbody tr[data-item-id="${item_id}"]`);
 
@@ -135,6 +136,8 @@ $("#btnAdd").on('click', function () {
             netTot += parseFloat($(this).find('.price').text());
         });
         $("#tot").text(netTot.toFixed(2));
+        $("#dis").text("The amount saved by the 20% discount: = Rs."+(netTot * 0.20).toFixed(2));
+        $("#final").text("New Total Rs:"+(netTot - (netTot * 0.20)).toFixed(2));
     }
 
     updateNetTotal();
@@ -149,11 +152,12 @@ $("#btnAdd").on('click', function () {
     $('#itemQut').text("_____________");
     $('#itemPrice').text("___________");
 });
-$("#place_Order").on('click',()=>{
+$("#place_Order").on('click', () => {
     let amount = parseFloat($('#amount').val());
     let netTotal = parseFloat($('#tot').text());
+    let discount = netTotal * 0.20; // Calculate 20% discount
 
-    $("#placeOrder-tbody tr").each(function() {
+    $("#placeOrder-tbody tr").each(function () {
         let quantity = parseFloat($(this).find('.quantity').text());
         let item_id = $(this).find('.item_id').text();
 
@@ -173,14 +177,16 @@ $("#place_Order").on('click',()=>{
         }
     });
 
-    if (amount >= netTotal) {
-        let cash = amount - netTotal;
+    let finalTotal = netTotal - discount; // Calculate final total after discount
+
+    if (amount >= finalTotal) {
+        let cash = amount - finalTotal;
         Swal.fire({
             icon: 'success',
             title: `Order Successful! \n Cash: ${cash.toFixed(2)}`,
             showConfirmButton: true
         });
-       clearPlaceOrderTable();
+        clearPlaceOrderTable();
     } else {
         Swal.fire({
             icon: 'error',
@@ -190,6 +196,7 @@ $("#place_Order").on('click',()=>{
     }
     loadDataTable();
 });
+
 
 function ClearFields() {
     $("#selectCus_ID").val("");
@@ -207,4 +214,6 @@ function clearPlaceOrderTable() {
     $('#placeOrder-tbody').empty();
     $('#tot').text(0.0);
     $('#amount').val("");
+    $('#dis').text("");
+    $('#final').text("");
 }
