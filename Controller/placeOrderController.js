@@ -68,7 +68,6 @@ $("#Order_id").on('click', function () {
     lastOrderId++;
     $("#Order_id").val(lastOrderId);
 });
-
 $("#placeOrderBtnReset").on('click',function (){
     $("#selectCus_ID").val("");
     $("#select").val("");
@@ -182,18 +181,6 @@ $("#place_Order").on('click',()=>{
             showConfirmButton: true
         });
        clearPlaceOrderTable();
-
-        let date = $('#currentDateTime').text();
-        let orderID = $('#Order_id').text();
-        let cusID = $('#selectCus_ID').text();
-
-        let recode = `<tr>
-            <td class='OrderId'>${orderID}</td>
-            <td class='customerId'>${cusID}</td>
-            <td class='date'>${date}</td>
-            <td class='net_total'>${netTotal}</td>
-</tr>`
-        $("#tblSearchOrder").append(recode);
     } else {
         Swal.fire({
             icon: 'error',
