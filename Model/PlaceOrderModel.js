@@ -1,5 +1,5 @@
-export default class PlaceOrderModel{
-    constructor(order_id,Item_ID,ItemName,Unite_Price,Quantity,Total) {
+export default class PlaceOrderModel {
+    constructor(order_id, Item_ID, ItemName, Unite_Price, Quantity, Total) {
         this._order_id = order_id;
         this._Item_ID = Item_ID;
         this._ItemName = ItemName;

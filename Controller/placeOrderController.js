@@ -63,11 +63,6 @@ $('#select').on('change', () => {
         $('#quantity_placeOrder').focus();
     }
 });
-let lastOrderId = 0;
-$("#Order_id").on('click', function () {
-    lastOrderId++;
-    $("#Order_id").val(lastOrderId);
-});
 $("#placeOrderBtnReset").on('click',function (){
     $("#selectCus_ID").val("");
     $("#select").val("");
@@ -76,6 +71,16 @@ $("#placeOrderBtnReset").on('click',function (){
     $("#itemPrice").text("");
     $("#quantity_placeOrder").val("");
 })
+let currentOrderId = Orders.length > 0 ? String(Number(Orders[Orders.length - 1].order_id) + 1).padStart(3, '0') : '001';
+
+// Function to generate the next order ID
+function generateOrderId() {
+    const nextOrderId = currentOrderId;
+    currentOrderId = String(Number(currentOrderId) + 1).padStart(3, '0');
+    return nextOrderId;
+}
+
+$("#Order_id").val(generateOrderId());
 $("#btnAdd").on('click', function () {
     let item_id = $("#select").val();
     let quantity = parseInt($("#quantity_placeOrder").val());
@@ -186,6 +191,7 @@ $("#place_Order").on('click', () => {
             title: `Order Successful! \n Cash: ${cash.toFixed(2)}`,
             showConfirmButton: true
         });
+        $("#Order_id").val(generateOrderId());
         clearPlaceOrderTable();
     } else {
         Swal.fire({
