@@ -1,4 +1,7 @@
 import { Customers, Items,Orders } from "../Db/Db.js";
+import PlaceOrderModel from "../Model/PlaceOrderModel.js";
+import ItemModel from "../Model/ItemModel.js";
+import CustomerModel from "../Model/ItemModel.js";
 
 
 const loadDataTable = () => {
@@ -161,36 +164,49 @@ $("#place_Order").on('click', () => {
     let amount = parseFloat($('#amount').val());
     let netTotal = parseFloat($('#tot').text());
     let discount = netTotal * 0.20; // Calculate 20% discount
-
-    $("#placeOrder-tbody tr").each(function () {
-        let quantity = parseFloat($(this).find('.quantity').text());
-        let item_id = $(this).find('.item_id').text();
-
-        let index = Items.findIndex(item => item.itemCode === item_id);
-
-        if (index !== -1) {
-            let newQuantity = Items[index].qty - quantity;
-
-            if (newQuantity >= 0) {
-                Items[index].qty = newQuantity;
-            } else {
-                // Handle the case where the new quantity would be negative (out of stock)
-                console.log("Error: Not enough quantity in stock for item with ID " + item_id);
-            }
-        } else {
-            console.log("Item not found in item_db.");
-        }
-    });
-
+    let order_id = $("#Order_id").val();
     let finalTotal = netTotal - discount; // Calculate final total after discount
+    let orderItems = [];
 
     if (amount >= finalTotal) {
+        $("#placeOrder-tbody tr").each(function () {
+            let quantity = parseFloat($(this).find('.quantity').text());
+            let item_id = $(this).find('.item_id').text();
+            let unit_price = parseFloat($(this).find('.item_price').text());
+            let total = parseFloat($(this).find('.price').text());
+
+            let index = Items.findIndex(item => item.itemCode === item_id);
+
+            if (index !== -1) {
+                let newQuantity = Items[index].qty - quantity;
+
+                if (newQuantity >= 0) {
+                    Items[index].qty = newQuantity;
+                    // Collect item details for the order
+                    orderItems.push({
+                        item_id: item_id,
+                        unit_price: unit_price,
+                        quantity: quantity,
+                        total: total
+                    });
+                } else {
+                    console.log("Error: Not enough quantity in stock for item with ID " + item_id);
+                }
+            } else {
+                console.log("Item not found in item_db.");
+            }
+        });
+
+        let newOrder = new PlaceOrderModel(order_id, orderItems, netTotal, discount, finalTotal);
+        Orders.push(newOrder);
+
         let cash = amount - finalTotal;
         Swal.fire({
             icon: 'success',
             title: `Order Successful! \n Cash: ${cash.toFixed(2)}`,
             showConfirmButton: true
         });
+
         $("#Order_id").val(generateOrderId());
         clearPlaceOrderTable();
     } else {
@@ -202,7 +218,6 @@ $("#place_Order").on('click', () => {
     }
     loadDataTable();
 });
-
 
 function ClearFields() {
     $("#selectCus_ID").val("");

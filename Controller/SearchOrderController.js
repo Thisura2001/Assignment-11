@@ -2,15 +2,18 @@ import PlaceOrderModel from "../Model/PlaceOrderModel.js";
 import { Customers, Items, Orders } from "../Db/Db.js";
 
 function getOrderId() {
-    console.log("Orders data:", Orders); // Log Orders data
+    // Log the Orders to debug its state
+    console.log("Orders:", Orders);
 
-    if (!Array.isArray(Orders) || Orders.length === 0) {
-        console.error("Orders is not an array or is empty");
+    // Check if Orders is properly loaded and is an array
+    if (!Array.isArray(Orders)) {
+        console.error("Orders is not an array or not properly loaded");
         return;
     }
 
     const selectOrderId = $("#SelectOrderId");
 
+    // Check if the select element exists
     if (selectOrderId.length === 0) {
         console.error("#SelectOrderId element not found");
         return;
@@ -29,7 +32,12 @@ function getOrderId() {
     });
 }
 
+// Ensure Orders is loaded before calling getOrderId
 $(document).ready(() => {
-    console.log("Document ready");
-    getOrderId(); // Directly call getOrderId on document ready
+    $('#SelectOrderId').on('focus', () => {
+        getOrderId();
+    });
+
+    // Call getOrderId on page load
+    getOrderId();
 });
