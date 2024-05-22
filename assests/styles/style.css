@@ -472,18 +472,11 @@ body{
     margin-left: 10px;
 }
 
-/*#tblSearchOrder td{*/
-/*    border: 1px solid #dddddd;*/
-/*    text-align: left;*/
-/*    padding: 8px;*/
-/*    min-width: 120px; !* Set minimum width for cells *!*/
-/*    background-color: white;*/
-/*}*/
 
-/*#tblSearchOrder th {*/
-/*    background-color: #f2f2f2;*/
-/*    color: black;*/
-/*}*/
+#tblSearchOrder th {
+    background-color: #f2f2f2;
+    color: black;
+}
 /*#tblSearchOrder td:nth-child(1){*/
 /*    position: relative;*/
 /*    left: 0;*/
@@ -550,4 +543,12 @@ body{
     color: #0caf3a;
     font-size: 30px;
     display: inline;
+}
+
+#tblSearchOrder td{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    min-width: 120px; /* Set minimum width for cells */
+    background-color: white;
 }

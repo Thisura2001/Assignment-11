@@ -1,11 +1,10 @@
 export default class PlaceOrderModel {
-    constructor(order_id, Item_ID, ItemName, Unite_Price, Quantity, Total) {
+    constructor(order_id, orderItems, netTotal, discount, finalTotal) {
         this._order_id = order_id;
-        this._Item_ID = Item_ID;
-        this._ItemName = ItemName;
-        this._Unite_Price = Unite_Price;
-        this._Quantity = Quantity;
-        this._Total = Total;
+        this._orderItems = orderItems;
+        this._netTotal = netTotal;
+        this._discount = discount;
+        this._finalTotal = finalTotal;
     }
 
     get order_id() {
@@ -16,43 +15,35 @@ export default class PlaceOrderModel {
         this._order_id = value;
     }
 
-    get Item_ID() {
-        return this._Item_ID;
+    get orderItems() {
+        return this._orderItems;
     }
 
-    set Item_ID(value) {
-        this._Item_ID = value;
+    set orderItems(value) {
+        this._orderItems = value;
     }
 
-    get ItemName() {
-        return this._ItemName;
+    get netTotal() {
+        return this._netTotal;
     }
 
-    set ItemName(value) {
-        this._ItemName = value;
+    set netTotal(value) {
+        this._netTotal = value;
     }
 
-    get Unite_Price() {
-        return this._Unite_Price;
+    get discount() {
+        return this._discount;
     }
 
-    set Unite_Price(value) {
-        this._Unite_Price = value;
+    set discount(value) {
+        this._discount = value;
     }
 
-    get Quantity() {
-        return this._Quantity;
+    get finalTotal() {
+        return this._finalTotal;
     }
 
-    set Quantity(value) {
-        this._Quantity = value;
-    }
-
-    get Total() {
-        return this._Total;
-    }
-
-    set Total(value) {
-        this._Total = value;
+    set finalTotal(value) {
+        this._finalTotal = value;
     }
 }

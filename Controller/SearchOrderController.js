@@ -1,6 +1,24 @@
 import PlaceOrderModel from "../Model/PlaceOrderModel.js";
 import { Customers, Items, Orders } from "../Db/Db.js";
 
+const loadDataTable = () => {
+    // Fetch the customerId and date dynamically
+    const customerId = $('#selectCus_ID').val(); // Assuming customer ID is selected from a dropdown
+    const date = $('#currentDateTime').text();
+
+    $('#searchOrderTBody').empty();
+
+    Orders.forEach(order => {
+        const row = `<tr>
+            <td>${order.order_id}</td>
+            <td>${customerId}</td>
+            <td>${date}</td>
+            <td>${order.finalTotal}</td>
+        </tr>`;
+        $('#searchOrderTBody').append(row);
+    });
+}
+
 function getOrderId() {
     // Log the Orders to debug its state
     console.log("Orders:", Orders);
@@ -38,6 +56,11 @@ $(document).ready(() => {
         getOrderId();
     });
 
+    $('#SelectOrderId').on('change', () => {
+        loadDataTable();
+    });
+
     // Call getOrderId on page load
     getOrderId();
+    loadDataTable(); // Load data table on page load
 });
